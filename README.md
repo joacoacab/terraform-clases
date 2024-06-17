@@ -1,13 +1,12 @@
 [<u>Diagrama de Infraestructura</u>](#diagrama-de-infraestructura)
 
-> [<u>Trasfondo</u>](#trasfondo)
+> [<u>Intro</u>](#intro)
 
 [<u>Diagrama de flujo de trabajo</u>](#diagrama-de-flujo-de-trabajo)
 
-> [<u>Explicación</u>](#explicación)
+> [<u>Procedimiento</u>](#procedimiento)
 
-[<u>Documentación del código
-Terraform</u>](#documentación-del-código-terraform)
+[<u>Documentación de los archivos Terraform</u>](#documentación-de-los-archivos-terraform)
 
 > [<u>Archivo “vpc.tf”</u>](#archivo-vpc.tf)
 >

@@ -184,7 +184,7 @@ infraestructura en la nube de AWS esté bien configurada y sea segura.
 
 #  
 
-# Documentación del código Terraform
+# Documentación de los archivos Terraform
 
 ## Archivo “vpc.tf”
 
@@ -784,7 +784,7 @@ en qué subred privada debe lanzarse la instancia invocando al atributo
 ```
 resource "aws_s3_bucket" "private_bucket" {
 
-bucket = "mbernardo-private-bucket"
+bucket = "jcabrera-private-bucket"
 
 }
 ```
@@ -800,7 +800,7 @@ instancia privada.
 
 - *bucket = "private-bucket-\${aws_vpc.test_vpc.cidr_block}"*: Aquí se
   define la propiedad “bucket” y se le asigna el valor de
-  “mbernardo-private-bucket” como nombre de bucket único de la región,
+  “jcabrera-private-bucket” como nombre de bucket único de la región,
   el cual es un ejemplo de nombre de bucket que respeta las reglas de
   nomenclatura de buckets de AWS.
 
@@ -859,7 +859,7 @@ través de varias configuraciones.
 ```
 resource "aws_s3_bucket" "public_bucket" {
 
-bucket = "mbernardo-public-bucket"
+bucket = "jcabrera-public-bucket"
 
 }
 ```
@@ -874,8 +874,8 @@ de almacenamiento de datos para la instancia pública..
 
 <!-- -->
 
-- *bucket = "mbernardo-public-bucket"*: aquí se define la propiedad
-  “bucket” y se le asigna el valor de “mbernardo-public-bucket” como
+- *bucket = "jcabrera-public-bucket"*: aquí se define la propiedad
+  “bucket” y se le asigna el valor de “jcabrera-public-bucket” como
   nombre de bucket único de la región, el cual es un ejemplo de nombre
   de bucket que respeta las reglas de nomenclatura de buckets de AWS..
   Esto es así para respetar la regla de nomenclatura de buckets de AWS
@@ -1269,16 +1269,16 @@ en tu sistema
 
 Comprobada la instalación de ambos software, deberás posicionarte en la
 carpeta o directorio contenedor de los archivos.tf desde la terminal del
-sistema (ya sea con Powershell o Bash) y ejecutar el comando “```terraform
-init```”. Esto inicializará terraform para adecuar el directorio de trabajo
+sistema (ya sea con Powershell o Bash) y ejecutar el comando ```terraform init```.
+Esto inicializará terraform para adecuar el directorio de trabajo
 con los archivos de configuración que contendrá la información de
 proveedores, variables declaradas y demás.
 
 ### **Paso 3: Autenticación a AWS**
 
-Desde la misma terminal que se ejecutó el “```terraform init```”, lo siguiente
+Desde la misma terminal que se ejecutó el ```terraform init```, lo siguiente
 es ingresar las credenciales para autenticarse a la cuenta de AWS, para
-ello se utiliza el comando “```aws configure```”, donde los primeros 2
+ello se utiliza el comando ```aws configure```, donde los primeros 2
 parámetros pedirá las credenciales para loguearte remotamente a tu
 cuenta en AWS.
 
@@ -1286,7 +1286,7 @@ cuenta en AWS.
 
 Ya logueado en AWS y hecha la inicialización de la carpeta de trabajo de
 Terraform, el último paso es ejecutar el plan para aplicar los cambios;
-puedes ejecutar simplemente “```terraform apply```” pero siempre es
-recomendable antes de esto ejecutar el comando “```terraform plan```” para
+puedes ejecutar simplemente ```terraform apply``` pero siempre es
+recomendable antes de esto ejecutar el comando ```terraform plan``` para
 tener un panorama visual del plan que se va a implementar a partir de
 tus archivos de configuración.

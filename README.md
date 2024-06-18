@@ -115,71 +115,71 @@ En resumen, la implementación de esta infraestructura básica servirá como pun
 
 ## Procedimiento
 
-1.  **Establecer proveedor y región**: En este paso, debes identificar
-    el proveedor de servicios en la nube que deseas utilizar (en este
-    caso, AWS) y la región geográfica en la que deseas desplegar tus recursos.
+1.  **Establecer proveedor y región**: En este paso, debemos identificar
+  el proveedor de servicios en la nube que deseamos utilizar (en este
+  caso, AWS) y la región geográfica en la que deseamos desplegar nuestros recursos.
 
 2.  **Crear la VPC**: Configurar una VPC que permita lanzar recursos de
-    AWS de forma virtual a la red que desplegamos. Se deben configurar
-    los atributos de la VPC con su bloque CIDR.
+  AWS de forma virtual a la red que desplegamos. Debemos configurar
+  los atributos de la VPC con su bloque CIDR.
 
 3.  **Crear subred privada**: En una VPC, las subredes privadas son
-    aquellas a las que no se puede acceder directamente desde Internet.
-    Se debe definir una subred privada con su propio bloque CIDR y
-    asociarla a la VPC.
+  aquellas a las que no se puede acceder directamente desde Internet.
+  Debemos definir una subred privada con su propio bloque CIDR y
+  asociarla a la VPC.
 
 4.  **Crear subred pública**: A diferencia de la subred privada, la
-    subred pública debe ser accesible desde Internet. Se debe definir
-    una subred pública con su propio bloque CIDR y asociarla a la VPC.
+  subred pública debe ser accesible desde Internet. Debemos definir
+  una subred pública con su propio bloque CIDR y asociarla a la VPC.
 
-5.  **Configurar NAT Gateway**: Se debes configurar un NAT Gateway que
-    actúe como intermediario para el tráfico saliente, restringiendo el
-    tráfico entrante a la subred privada y para permitir que la
-    instancia en las subred privada acceda a Internet, por ejemplo; para
-    actualizaciones.
+5.  **Configurar NAT Gateway**: Debemos configurar un NAT Gateway que
+  actúe como intermediario para el tráfico saliente, restringiendo el
+  tráfico entrante a la subred privada y para permitir que la
+  instancia en las subred privada acceda a Internet, por ejemplo; para
+  actualizaciones.
 
-6.  **Asociar IP elástica**: Asocia una IP elástica al NAT Gateway para
-    que la instancia en la subred privada pueda tener una dirección IP
-    fija para comunicarse con Internet.
+6.  **Asociar IP elástica**: Asociar una IP elástica al NAT Gateway para
+  que la instancia en la subred privada pueda tener una dirección IP
+  fija para comunicarse con Internet.
 
 7.  **Configurar Internet Gateway**: Para habilitar la conectividad a
-    Internet desde la subred pública dentro de la VPC, se debe
-    configurar un Internet Gateway y attacharlo a la VPC.
+  Internet desde la subred pública dentro de la VPC, debemos
+  configurar un Internet Gateway y attacharlo a la VPC.
 
-8.  **Configurar tabla de enrutamiento**: Definir las reglas de
-    enrutamiento en la VPC para dirigir el tráfico correctamente entre
-    la subred pública y el Internet Gateway.
+8.  **Configurar tabla de enrutamiento**: Debemos definir las reglas de
+  enrutamiento en la VPC para dirigir el tráfico correctamente entre
+  la subred pública y el Internet Gateway.
 
 9.  **Crear Instancia EC2 Privada**: En la subred privada, lanzar una
-    instancia EC2 que contenga los atributos de tipo de instancia y AMI
-    especificados por AWS.
+  instancia EC2 que contenga los atributos de tipo de instancia y AMI
+  especificados por AWS.
 
-10. **Crear Instancia EC2 Pública**: En la subred pública, lanza una
-    instancia EC2 con libre acceso a Internet y atribuirle las
-    especificaciones ya mencionadas en la anterior instancia.
+10. **Crear Instancia EC2 Pública**: En la subred pública, lanzar una
+  instancia EC2 con libre acceso a Internet y atribuirle las
+  especificaciones ya mencionadas en la instancia anterior.
 
-11. **Crear Bucket S3 Privado**: Crea un bucket S3 que solo sea
-    accesible desde la VPC.
+11. **Crear Bucket S3 Privado**: Crear un bucket S3 que solo sea
+  accesible desde la VPC.
 
-12. **Configurar Bloque de acceso público**: Establece la configuración
-    de “Bloqueo de acceso público” tanto para el bucket privado como el
-    público
+12. **Configurar Bloque de acceso público**: Establecer la configuración
+  de “Bloqueo de acceso público” tanto para el bucket privado como el
+  público.
 
-13. **Crear Bucket S3 Público**: Crea un bucket S3 que sea accesible
-    públicamente a través de Internet.
+13. **Crear Bucket S3 Público**: Crear un bucket S3 que sea accesible
+  públicamente a través de Internet.
 
-14. **Configurar Políticas de Buckets**: Establece políticas de acceso
-    en los buckets S3 para que puedan compartir datos entre ellos
+14. **Configurar Políticas de Buckets**: Establecer políticas de acceso
+  en los buckets S3 para que puedan compartir datos entre ellos.
 
 15. **Ejecutar: terraform apply**: Realizar validación de errores de
-    sintaxis del código con el comando *terraform validate* y verifica
-    el plan de cambios que realizará el código con el comando *terraform
-    plan*. Si luego de esto todo parece en orden ya se podrá ejecutar el
-    comando *terraform apply* para aplicar las configuraciones definidas
-    en los archivos de configuración de Terraform y desplegar la
-    infraestructura definida en AWS.
+  sintaxis del código con el comando *terraform validate* y verificar
+  el plan de cambios que realizará el código con el comando *terraform
+  plan*. Si luego de esto todo parece en orden, ya podemos ejecutar el
+  comando *terraform apply* para aplicar las configuraciones definidas
+  en los archivos de configuración de Terraform y desplegar la
+  infraestructura definida en AWS.
 
-Cada uno de estos pasos es crucial para asegurarse de que la
+Cada uno de estos pasos es crucial para asegurarnos de que la
 infraestructura en la nube de AWS esté bien configurada y sea segura.
 
 #  

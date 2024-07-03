@@ -1,25 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pgadmin-deployment
-  namespace: k8space
+  name: grafana
+  namespace: grafana
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pgadmin
+      app: grafana
   template:
     metadata:
       labels:
-        app: pgadmin
+        app: grafana
     spec:
       containers:
-      - name: pgadmin
-        image: dpage/pgadmin4:latest
-        ports:
-        - containerPort: 80
-        env:
-        - name: PGADMIN_DEFAULT_EMAIL
-          value: "admin@admin.com"
-        - name: PGADMIN_DEFAULT_PASSWORD
-          value: "admin"
+        - name: grafana
+          image: grafana/grafana:latest
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: grafana-storage
+              mountPath: /var/lib/grafana
+            - name: grafana-config
+              mountPath: /etc/grafana/grafana.ini
+              subPath: grafana.ini
+      volumes:
+        - name: grafana-storage
+          persistentVolumeClaim:
+            claimName: grafana-pvc
+        - name: grafana-config
+          configMap:
+            name: grafana-config

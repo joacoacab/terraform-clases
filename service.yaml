@@ -1,13 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-service
-  namespace: k8space
+  name: grafana
+  namespace: grafana
 spec:
   selector:
-    app: postgres
+    app: grafana
   ports:
     - protocol: TCP
-      port: 5432
-      targetPort: 5432
-
+      port: 80
+      targetPort: 3000
